@@ -1,5 +1,5 @@
 # insights-using-SQL
-## Here i used a dataset provided bye Microsoft.
+## Here i used a dataset provided by Microsoft.
 
 1. Which shippers do we have?
    We have a table called Shippers. Return all the fields
