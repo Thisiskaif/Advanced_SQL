@@ -1,104 +1,63 @@
-# insights-using-SQL
-## Here i used a dataset provided by Microsoft.
+# SQL Data Analysis Project using AdventureWorks Dataset
+#### In this project, I leveraged the AdventureWorks dataset in SQL Server to demonstrate my comprehensive understanding and proficiency in SQL concepts, ranging from foundational to advanced techniques. Through a series of complex queries and data manipulations, I showcased my ability to extract meaningful insights from a real-world dataset.
+
+Project Highlights:
+
+Data Exploration and Filtering: I utilized the SELECT and WHERE clauses to explore the AdventureWorks dataset, filtering and retrieving specific data points based on various criteria. This enabled me to retrieve relevant information from the extensive dataset efficiently.
+
+Data Aggregation and Grouping: Employing the GROUP BY clause, I performed data aggregation and summarization operations. By grouping data based on different attributes, I obtained valuable insights into trends and patterns within the data.
+
+Advanced Analytics with Window Functions: I harnessed the power of window functions to calculate total order amount,units in stock, prodct that needs to be reorder. These advanced analytical techniques allowed me to gain a deeper understanding of the dataset's temporal and ranked characteristics.
+
+Common Table Expressions (CTEs): I employed CTEs to create temporary result sets, enhancing code readability and efficiency. By breaking down complex queries into manageable parts, I demonstrated my proficiency in optimizing SQL code.
+
+Subqueries for Data Enrichment: Utilizing subqueries, I enriched the dataset by combining information from different tables. This enabled me to answer complex questions that required data from multiple sources.
+
+Problem Solving with CASE Statements: I used CASE statements to handle conditional logic, transforming and categorizing data based on specific conditions. This demonstrated my ability to manipulate data and derive meaningful insights.
+
+Through this project, I not only showcased my technical skills but also highlighted my ability to analyze and interpret data effectively. The adventure of navigating through a diverse and intricate dataset exemplified my dedication to continuous learning and my commitment to delivering data-driven solutions. i tried to answer all the scenario based question as listed below.
 
 1. Which shippers do we have?
    We have a table called Shippers. Return all the fields
  from all the shipper.
- ### Answer
-    Select
-    *
-    From Shippers
 
 
 2. Certain fields from Categories
    In the Categories table, selecting all the fields using
-this SQL:
-### Answer
-    Select
-    CategoryName
-    ,Description
-
-from Categories
-
-3. Sales Representatives
+   
+4. Sales Representatives
    We’d like to see just the FirstName, LastName, and
  HireDate of all the employees with the Title of Sales
  Representative.
-### Answer
-    Select
-    FirstName
-    ,LastName
-    ,HireDate
-    From Employees
-    Where
-    Title = 'Sales Representative'
 
 4. Sales Representatives in the United
  States:
    Now we’d like to see the same columns as above, but
  only for those employees that both have the title of
  Sales Representative, and also are in the United States.
-### answer
-    Select
-    FirstName
-    ,LastName
-    ,HireDate
-    From Employees
-    Where
-    Title = 'Sales Representative'
-    and Country = 'USA'
+
 
 5. Orders placed by specific EmployeeID:
    Show all the orders placed by a specific employee. The
  EmployeeID for this Employee (Steven Buchanan) is 5.
-### Answer
-     Select
-     OrderID
-     ,OrderDate
-     From Orders
-     Where
-     EmployeeID = 5
+
 
 6. Suppliers and ContactTitles:
    In the Suppliers table, show the SupplierID,
    ContactName, and ContactTitle for those Suppliers
    whose ContactTitle is not Marketing Manager.
-### Answer
-     Select
-     SupplierID
-     ,ContactName
-     ,ContactTitle
-     From Suppliers
-     Where
-     ContactTitle <> 'Marketing Manager'
-
 
 7. Products with “queso” in ProductName:
    In the products table, we’d like to see the ProductID
    and ProductName for those products where the
    ProductName includes the string “queso”.
-### Answer
-     Select
-     ProductID
-     ,ProductName
-     From Products
-     Where
-     ProductName like '%queso%'
 
 8. Orders shipping to France or Belgium:
    Looking at the Orders table, there’s a field called
    ShipCountry. Write a query that shows the OrderID,
    CustomerID, and ShipCountry for the orders where the
    ShipCountry is either France or Belgium.
-#### Answer
-      Select
-      OrderID
-      ,CustomerID
-      ,ShipCountry
-      From Orders
-      where 
-      ShipCountry = 'France'
-      or ShipCountry = 'Belgium
+
 9. Orders shipping to any country in Latin
    America:
    Now, instead of just wanting to return all the orders
@@ -113,29 +72,12 @@ from Categories
    Argentina
    Venezuela.
    
-###   Answer
-       Select
-       OrderID
-      ,CustomerID
-      ,ShipCountry
-      From Orders
-      where
-      ShipCountry in('Brazil','Mexico','Argentina','Venezuela')
-
-
 10. Employees, in order of age:
     For all the employees in the Employees table, show the
     FirstName, LastName, Title, and BirthDate. Order the
     results by BirthDate, so we have the oldest employees
     first.
-### Answer 
-      Select
-      FirstName
-      ,LastName
-      ,Title
-      ,BirthDate
-      From Employees
-      Order By Birthdate desc
+
       
 11. Showing only the Date with a DateTime
     field:
@@ -143,26 +85,13 @@ from Categories
     Employees in order of BirthDate, we see the time of
     the BirthDate field, which we don’t want. Show only
     the date portion of the BirthDate field.
-### Answer
-      Select
-      FirstName
-      ,LastName
-      ,Title
-      ,DateOnlyBirthDate = convert(date, BirthDate)
-      From Employees
-      Order By Birthdate
+
 
 12. Employees full name:
     Show the FirstName and LastName columns from the
     Employees table, and then create a new column called
     FullName, showing FirstName and LastName joined
     together in one column, with a space in-between.
-###    Answer
-        Select
-        FirstName
-       ,LastName
-       ,FullName = FirstName + ' ' + LastName
-       From Employees
 
 
 13. OrderDetails amount per line item:
@@ -172,43 +101,20 @@ from Categories
     Discount field for now.
     In addition, show the OrderID, ProductID, UnitPrice,
     and Quantity. Order by OrderID and ProductID.
-### Answer
-     Select
-     OrderID
-     ,ProductID
-     ,UnitPrice
-     ,Quantity
-     ,UnitPrice * Quantity as TotalPrice -- Alias using "as"
-     From OrderDetails
-     Order by
-     OrderID
-     ,ProductID
 
 14. How many customers?
     How many customers do we have in the Customers
     table? Show one value only, and don’t rely on getting
     the recordcount at the end of a resultset.
-### Answer
-     Select
-     TotalCustomers = count(*)
-     from Customers
-
 
 15. When was the first order?
     Show the date of the first order ever made in the
     Orders table.
-### Asnwer   
-      Select FirstOrder = min(OrderDate)
-      From Orders
-
 
 16. Countries where there are customers
     Show a list of countries where the Northwind company
     has customers.
-### Answer
-     Select distinct Country
-     From Customers
-    
+
 17. Contact titles for customers
     Show a list of all the different values in the Customers
     table for ContactTitles. Also include a count for each
@@ -217,22 +123,12 @@ from Categories
     “Countries where there are customers”
     , except we now
     want a count for each ContactTitle 
-### Answer
-     Select ContactTitle,TotalContactTitle = count(*)
-     From Customers
-     Group by ContactTitle
-     Order by count(*) desc
 
     
 18. Products with associated supplier names
     We’d like to show, for each product, the associated
     Supplier. Show the ProductID, ProductName, and the
     CompanyName of the Supplier. Sort by ProductID.
-### Answer
-     Select ProductID,ProductName,Supplier = CompanyName
-     From Products P 
-     Join Suppliers S 
-     on P.SupplierID = S.SupplierID
 
     
 19. Orders and the Shipper that was used
@@ -240,15 +136,7 @@ from Categories
     including the Shipper that was used. Show the
     OrderID, OrderDate (date only), and CompanyName of
     the Shipper, and sort by OrderID.
-### Answer
-      Select O.OrderID,OrderDate = convert(date, O.OrderDate),Shipper = S.CompanyName
-      From Orders O
-      join Shippers S
-      on S.ShipperID = O.ShipVia
-      Where
-      O.OrderID < 10300
-      Order by
-      O.OrderID
+
 
     
 20. Categories, and the total products in
@@ -419,8 +307,6 @@ question. The CustomerGroup value for one of the
 rows is null.
 Fix the SQL so that there are no nulls in the
 CustomerGroup field.
-
-### Customer grouping with percentage
 
 50. Based on the above query, show all the defined
 CustomerGroups, and the percentage in each. Sort by
